@@ -197,6 +197,67 @@ body {
   gap: var(--space-10);
 }
 
+/* ===== The tile grid =====
+   Vitality's own grid (.gridConsolidated) is a hand-placed 6-tile
+   grid-template-areas map. Named areas cannot drive a registry that does not
+   know its tiles ahead of time, so the AREAS are not ported. Its MEASUREMENTS
+   are, exactly: 4 columns, rows minmax(160px, 200px), gap --space-4; at 980px
+   two columns and grid-auto-rows minmax(160px, auto); at 560px gap --space-3
+   and minmax(150px, auto). Tiles span by size instead of being named.
+
+   [hidden] is why an empty board is still the seed: no tiles, no grid, no gap,
+   nothing on screen but the gem, the name and the date. */
+.tileGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(160px, 200px);
+  gap: var(--space-4);
+}
+
+.tileGrid[hidden] { display: none; }
+
+.tile {
+  /* --cols/--rows come from SIZE_PRESETS in host.js. min-width:0 stops a wide
+     tile's content forcing its column past 1fr and shoving the grid sideways. */
+  grid-column: span var(--cols, 2);
+  grid-row: span var(--rows, 1);
+  min-width: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.tileFrame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  /* color-scheme:normal, deliberately. The tile spec forbids a tile declaring
+     color-scheme because a dark declaration makes the browser paint an opaque
+     white canvas behind it. <html> here sets color-scheme:dark, which iframes
+     inherit, so it is neutralised at the frame instead. */
+  color-scheme: normal;
+}
+
+@media (max-width: 980px) {
+  .tileGrid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(160px, auto);
+  }
+  /* A 3-or-4-wide tile cannot fit 2 columns; clamp instead of letting it
+     overflow the grid. */
+  .tile { grid-column: span min(var(--cols, 2), 2); }
+}
+
+@media (max-width: 560px) {
+  .tileGrid {
+    grid-auto-rows: minmax(150px, auto);
+    gap: var(--space-3);
+  }
+}
+
 .header {
   display: flex;
   flex-direction: column;
@@ -493,6 +554,10 @@ body {
         <p class="date" id="date"></p>
       </div>
     </div>
+
+    <!-- The board. Empty until the registry has a tile, and [hidden] until
+         then, so a fresh seed is the shell and nothing else. host.js fills it. -->
+    <div class="tileGrid" id="tileGrid" hidden></div>
   </div>
 
 </main>
@@ -628,6 +693,11 @@ window.Vitality.load().then(function (data) {
   renderParticles()
 })
 </script>
+
+<!-- The board. Order matters: the registry is the list, the host renders it.
+     registry.js is the ONE file that changes when a tile is added. -->
+<script src="lib/tiles/registry.js"></script>
+<script src="lib/tiles/host.js"></script>
 
 </body>
 </html>

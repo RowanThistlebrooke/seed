@@ -78,7 +78,12 @@ A tile arrives as one HTML file in a public repo. They paste one line:
 There is no command for this. You already know the three moves:
 
 1. Fetch the file and put it in `tiles/`.
-2. Register it so the board renders it.
+2. Add ONE line to `lib/tiles/registry.js`:
+   `{ id: 'stocks', name: 'Stocks', file: 'tiles/stocks.html', size: 'big' }`.
+   That is the whole registration; the host renders everything in that list.
+   The `id` is the storage key. Never change it once data exists under it, or
+   the tile boots empty and its history is orphaned. Sizes are
+   s / m / tall / hero / big / band / l (registry.js documents each).
 3. Add it to `lib/tiles/weights.ts` and ask what it is worth toward their goal.
 
 Then tell them what got wired, in one line: the tile saves to their vault, you
@@ -86,21 +91,38 @@ can fill it, and it now counts toward y.
 
 ## How a tile is wired, so you never guess
 
-A tile knows exactly two functions: `window.Vitality.save(obj)` and
-`window.Vitality.load()`. That is all it knows about the world.
+The board (`lib/tiles/host.js`) renders each registered tile in a sealed iframe:
+`sandbox="allow-scripts"`, never allow-same-origin. Sealed means the tile cannot
+read the page, the vault, a key, or another tile, and it has NO localStorage of
+its own (touching it throws). Data reaches a tile through the host or not at all.
 
-- The board injects those into the tile's sealed frame, and they land in Supabase.
-  That is the vault connection, and it is automatic.
-- You write the same slot through the connector. The tile renders what it finds.
-  That is your connection.
-- The tile's number becomes an x in the equation. That is the goal connection.
+The tile talks to the host by postMessage, through the Vitality bridge it
+carries in its own script. This is the SAME protocol as the hosted Vitality
+app, on purpose: one tile file runs on both boards with no edit.
+
+- `Vitality.save(data)` / `Vitality.load()` - the tile's OWN state. Lands in the
+  vault slot for its id. Only that tile reads it. The host routes by the
+  sender's window, never by anything the message claims, so a tile can only
+  ever write to itself.
+- `Vitality.report({ key, label, value, date, kind, goalDirection })` - the
+  tile's ONE honest number for a day. This lands in the LEDGER, one shape for
+  every tile, which is what lets you read gym and spend and revenue in one
+  query. A reported number is an x in the equation. One row per key per day;
+  re-reporting a day replaces it.
+- You write the same slots through the connector. The tile renders what it
+  finds. That is your connection.
+
+**A tile that defines `window.Vitality` as a localStorage fallback is broken
+here**: the sealed frame has no storage, so every save silently vanishes. If a
+tile arrives with that shim, replace it with the postMessage bridge (copy it
+from any tile in `tiles/`, or from the hosted app's build prompt) and tell them
+what you fixed.
 
 **Every tile declares its store shape in its own header comment.** Read that shape
 before you write anything. Never invent one. If a tile does not declare its shape,
 it is not finished, and you say so.
 
-Sealed tiles never fetch and never hold a key. Data reaches a tile through you, or
-through the host, or not at all.
+Sealed tiles never fetch and never hold a key.
 
 ---
 
