@@ -44,10 +44,8 @@ might be a total beginner. Warm, straightforward, zero fluff.
    take it.
 
 Stop there. No API keys, no automation, no connector, no goal setting. Those
-come later. When the board is live with my name on it, say so plainly, and
-close with exactly:
-
-"You're done here. Build something great." - Rowan
+come later. When the board is live with my name on it, say so plainly. That is
+the end of setup.
 ```
 
 ---

@@ -167,7 +167,5 @@ Sealed tiles never fetch and never hold a key.
 
 ## The close
 
-When the board is live with their name on it, say so plainly. Then close with
-exactly:
-
-> "You're done here. Build something great." - Rowan
+When the board is live with their name on it, say so plainly. That is the end
+of setup - stop there. No pitch, no tease, no sign-off ceremony.
