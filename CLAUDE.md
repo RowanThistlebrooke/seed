@@ -77,6 +77,10 @@ own videos. Do not bring them up here.
 
 ## Adding a tile
 
+Everything below is for AFTER setup is done. During setup there are no tiles,
+no episode talk, no teasing what could be added. The board ships empty on
+purpose. This flow starts the day they come back with a link.
+
 A tile arrives as one HTML file in a public repo. They paste one line:
 
 > Add the stocks tile from github.com/OWNER/REPO to my dashboard.
