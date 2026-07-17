@@ -19,7 +19,7 @@ might be a total beginner. Warm, straightforward, zero fluff.
 1) npx --yes degit rowanthistlebrooke/seed . --force
    This hands you CLAUDE.md, your instructions. Read it first.
 
-2) There is nothing to install. This board is one HTML file. Serve it with
+2) There is nothing to install - the board is plain files. Serve it with
    npx --yes serve . and hand me the localhost link. While that starts, put the
    wait to work: open the free signup pages for GitHub, Supabase and Vercel and
    tell me to make all three now. Free, and they are what take this live later.
@@ -55,6 +55,9 @@ the end of setup.
 ```
 index.html            your board. gem, your name, your date. nothing else yet
 CLAUDE.md             the mentor's instructions. this is what makes it a mentor
+lib/site.js           your name. one line, written the moment you say it
+lib/tiles/registry.js the list of tiles on your board. one line per tile
+lib/tiles/host.js     the host. renders each tile sealed, carries its data
 lib/tiles/weights.ts  the equation. y = Sum of w times x. empty until it is yours
 vault/                your context. who you are, the chapter, the decisions
 supabase/sync.sql     the vault schema. two tables, both yours only
