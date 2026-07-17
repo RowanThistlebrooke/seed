@@ -562,6 +562,10 @@ body {
 
 </main>
 
+<!-- Who this board belongs to. Loaded before the boot script so the greeting
+     can read it. The mentor writes this file the moment they say their name. -->
+<script src="lib/site.js"></script>
+
 <script>
 // ── The host contract. Host present, it uses the dashboard's store. No host,
 //    localStorage, and the shell still runs.
@@ -681,15 +685,17 @@ function renderParticles() {
   }
 }
 
-// ── Boot. The name comes from the store. page.tsx reads first_name and passes
-//    firstName ?? null; no name means DashboardHeader's renderName is false and
-//    the greeting simply renders without one.
+// ── Boot. The name: the store first (a later episode's in-app profile), then
+//    lib/site.js, the file the mentor writes the moment they say their name.
+//    No name at all means DashboardHeader's renderName is false and the
+//    greeting simply renders without one.
+var siteName = (window.SITE && typeof window.SITE.name === 'string' && window.SITE.name.trim()) || null
 window.Vitality.load().then(function (data) {
-  var name = (data && data.name) || null
+  var name = (data && data.name) || siteName
   renderHeader(name)
   renderParticles()
 }).catch(function () {
-  renderHeader(null)
+  renderHeader(siteName)
   renderParticles()
 })
 </script>

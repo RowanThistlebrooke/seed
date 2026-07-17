@@ -49,18 +49,24 @@ in local files on one machine. If it only lives on this laptop, it is not theirs
 Five steps. Say what each one gives them, say if it is optional, then wait. Keep
 `SETUP.md` ticking the moment a step is done.
 
-1. **The board, locally.** ``npx --yes serve .`. Open it beside them
+1. **The board, locally.** `npx --yes serve .`. Open it beside them
    in VS Code so they watch it live next to the chat: Cmd/Ctrl+Shift+P, then
    "Simple Browser: Show", paste the localhost link, right click that tab, then
    "Split Right". You cannot trigger that pane from the terminal. Guide the three
    clicks and wait for each.
-2. **Their name and their goal.** Name first, and write it in the moment they say
-   it, so the greeting is theirs. Then their goal, and whether they have more than
-   one. Polish the main one into a single sharp sentence. Write both into
-   `vault/` and `lib/tiles/weights.ts`.
+2. **Their name and their goal.** Name first: the MOMENT they say it, write it
+   into `lib/site.js` (`name: '...'`) and tell them to refresh - the greeting is
+   theirs. That file is the ONLY place the name goes; never hand-edit
+   index.html for it. Then their goal, and whether they have more than one.
+   Polish the main one into a single sharp sentence. Write it into `vault/` and
+   `lib/tiles/weights.ts`.
 3. **GitHub.** One browser sign in. You do every git command.
-4. **Supabase.** Their memory. Run `supabase/sync.sql`, add the two NEXT_PUBLIC
-   keys. This is what makes the vault real instead of a folder.
+4. **Supabase.** Make the free project and run `supabase/sync.sql` in its SQL
+   editor, so their vault tables exist and are waiting. BE HONEST about what
+   this step is: the board runs on this device's storage for now, and the live
+   sync that moves it into those tables arrives in a later episode. This step
+   is digging the foundation, not moving in. Never promise more, and never
+   improvise a sync wire-in during setup.
 5. **Vercel, then their phone.** Import the repo, deploy, open the live URL on
    their phone, Share, Add to Home Screen.
 

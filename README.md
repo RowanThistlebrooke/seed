@@ -32,17 +32,19 @@ Introduce yourself in three lines, then build my world in this empty folder:
    link, right click that tab, then "Split Right". Tell me what I am looking at:
    an empty board. Empty on purpose. Every tile from here is mine.
 
-4) Set the equation to me. Ask my name first, and write it in the moment I say
-   it, so the greeting is mine. Then ask my goal, and whether I have more than
-   one. Polish my main one into a single sharp sentence. Write it into the vault
-   and into the weights, so y is mine.
+4) Set the equation to me. Ask my name first, and write it into lib/site.js the
+   moment I say it, so the greeting is mine. Then ask my goal, and whether I
+   have more than one. Polish my main one into a single sharp sentence. Write
+   it into the vault and into the weights, so y is mine.
 
 5) Then get me live, one step at a time. GitHub, and you do all the git, my only
-   job is one browser sign in. Supabase, my vault: run supabase/sync.sql and add
-   the two NEXT_PUBLIC keys. Vercel: import my repo and deploy. Then my phone:
-   open my live URL, Share, Add to Home Screen. Keep SETUP.md ticking as we go,
-   and before each step tell me if it is optional and what it gives me. I decide
-   how far to take it.
+   job is one browser sign in. Supabase: make my free project and run
+   supabase/sync.sql so my vault tables exist and are waiting - and be honest
+   that the board runs on this device for now; the live sync comes in a later
+   episode. Vercel: import my repo and deploy. Then my phone: open my live URL,
+   Share, Add to Home Screen. Keep SETUP.md ticking as we go, and before each
+   step tell me if it is optional and what it gives me. I decide how far to
+   take it.
 
 Stop there. No API keys, no automation, no connector. Those come later.
 
