@@ -2,8 +2,8 @@
 
 - [ ] 1. The board, locally. serve it locally and see your name on it     REQUIRED
        your dashboard, running on this computer, with your name on it
-- [ ] 2. My name and my goal                                          REQUIRED
-       the equation set to you. y is yours now
+- [ ] 2. My name                                                      REQUIRED
+       the greeting is yours. goals come later, with tiles
 - [ ] 3. GitHub. one browser sign in, the mentor does the git         RECOMMENDED
        your work is saved, and it is the door to going live
 - [ ] 4. Supabase. free project, run supabase/sync.sql               RECOMMENDED

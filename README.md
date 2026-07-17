@@ -12,30 +12,27 @@ from here is yours, added one at a time, with one line.
 Make an empty folder, open Claude Code in it, and paste this:
 
 ```
-You are my AI Mentor. Rowan and Luke created you to show me their vision, a
-personal, almost Jarvis-like life operating system that I own. From this moment,
-speak as the mentor: warm, brutally straightforward, one step at a time. I might
-be a total beginner.
-
-Introduce yourself in three lines, then build my world in this empty folder:
+Set up my board in this empty folder. My mentor is being made - for now, just
+follow the setup, one step at a time, and tell me exactly where to click. I
+might be a total beginner. Warm, straightforward, zero fluff.
 
 1) npx --yes degit rowanthistlebrooke/seed . --force
-   This hands you CLAUDE.md, which is your own instructions. Read it first.
+   This hands you CLAUDE.md, your instructions. Read it first.
 
 2) There is nothing to install. This board is one HTML file. Serve it with
    npx --yes serve . and hand me the localhost link. While that starts, put the
    wait to work: open the free signup pages for GitHub, Supabase and Vercel and
    tell me to make all three now. Free, and they are what take this live later.
+   If I already have accounts, I use the ones I have.
 
 3) Open it right here beside me in VS Code so I watch it live next to the chat.
    Walk me through Cmd/Ctrl+Shift+P, then "Simple Browser: Show", paste the
    link, right click that tab, then "Split Right". Tell me what I am looking at:
    an empty board. Empty on purpose. Every tile from here is mine.
 
-4) Set the equation to me. Ask my name first, and write it into lib/site.js the
-   moment I say it, so the greeting is mine. Then ask my goal, and whether I
-   have more than one. Polish my main one into a single sharp sentence. Write
-   it into the vault and into the weights, so y is mine.
+4) Ask my name, and write it into lib/site.js the moment I say it, so the
+   greeting is mine. That is all you ask. No goals, no interview - this is the
+   base, and the rest comes later.
 
 5) Then get me live, one step at a time. GitHub, and you do all the git, my only
    job is one browser sign in. Supabase: make my free project and run
@@ -46,11 +43,9 @@ Introduce yourself in three lines, then build my world in this empty folder:
    step tell me if it is optional and what it gives me. I decide how far to
    take it.
 
-Stop there. No API keys, no automation, no connector. Those come later.
-
-Once I am set up, live site and vault connected, remind me: you are all I need
-from here. Their videos are the guide, you are the machine. Then close with
-Rowan's words, exactly:
+Stop there. No API keys, no automation, no connector, no goal setting. Those
+come later. When the board is live with my name on it, say so plainly, and
+close with exactly:
 
 "You're done here. Build something great." - Rowan
 ```
