@@ -11,8 +11,8 @@ import { readFileSync } from 'node:fs'
 const CHANNEL = '1527630662784389241'   // #start-here
 // fence order in README.md -> pinned bot message, both edited in place
 const PINS = [
-  { fence: 0, message: '1528029293224005632', header: '**The prompt** ⬇️ copy it all:' },
-  { fence: 1, message: '1528340748737708062', header: '**Already have a board? The update prompt** ⬇️ any board, any state - copy it all:' },
+  { fence: 0, message: '1528029293224005632', header: '**new board** copy all of this:' },
+  { fence: 1, message: '1528340748737708062', header: '**update your board** any board, any state. copy all of this:' },
 ]
 const T = process.env.DISCORD_BOT_TOKEN
 if (!T) { console.error('missing DISCORD_BOT_TOKEN'); process.exit(1) }
