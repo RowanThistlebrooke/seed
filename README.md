@@ -50,6 +50,37 @@ the end of setup.
 
 ---
 
+## Already have a board? The update prompt
+
+Your board never goes stale. Paste this any time - it looks at what you
+have and brings every piece current, without touching your data:
+
+```
+Update my board to the latest, from wherever it is. Look at what I have -
+don't ask me to know. Never touch my data: my name (lib/site.js), my
+registry entries, my weights, my vault/ and my tile data stay exactly as
+they are. Tell me what changed when you're done, then push.
+
+1) Refresh the platform from github.com/rowanthistlebrooke/seed:
+   index.html and lib/tiles/host.js (fetch the raw files, replace mine).
+   If lib/site.js or lib/tiles/registry.js are missing, create them from
+   the seed - never overwrite ones that exist.
+
+2) Refresh every tile I have from its source, keeping my registry line:
+   - finance -> github.com/rowanthistlebrooke/ep-finance-stocks (finance.html)
+   - vitals  -> github.com/rowanthistlebrooke/inner-circle (vitals/vitals.html)
+   A tile with no known source stays untouched.
+
+3) If any of my tiles defines window.Vitality as a localStorage fallback
+   with no postMessage bridge, swap in the shipped bridge and tell me
+   what you fixed.
+
+4) Sanity: serve it, confirm my name still greets me and every tile
+   renders. Anything looks wrong, stop and show me before pushing.
+```
+
+---
+
 ## What is in here
 
 ```
