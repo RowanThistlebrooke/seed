@@ -705,5 +705,10 @@ window.Vitality.load().then(function (data) {
 <script src="lib/tiles/registry.js"></script>
 <script src="lib/tiles/host.js"></script>
 
+<!-- The Library: the settings gear, top-right. It injects itself (gear, styles,
+     overlay), reads the registry above, and toggles tiles through the host's
+     remount. Delete this one line and the board is the bare seed again. -->
+<script src="lib/tiles/library.js"></script>
+
 </body>
 </html>

@@ -18,6 +18,11 @@ Voice, always: no em dashes, no emojis, short human sentences.
 An empty shell: their gem, their name, their date. No tiles. That is on purpose.
 Every tile from here is theirs, added one at a time, from a repo, with one line.
 
+There is one control: the Library gear, top right (`lib/tiles/library.js`). It
+opens the settings panel - every tile on the board and what powers each one, with
+one-tap remove / add. On the empty seed it is honest about being empty and points
+to adding the first tile. As they add tiles, it becomes the map of their board.
+
 The equation is the point. `y = Σ w·x`. Their goal is y. Every tile is an x.
 The weights live in `lib/tiles/weights.ts`, in plain data, versioned in git.
 

@@ -62,9 +62,11 @@ registry entries, my weights, my vault/ and my tile data stay exactly as
 they are. Tell me what changed when you're done, then push.
 
 1) Refresh the platform from github.com/rowanthistlebrooke/seed:
-   index.html and lib/tiles/host.js (fetch the raw files, replace mine).
-   If lib/site.js or lib/tiles/registry.js are missing, create them from
-   the seed - never overwrite ones that exist.
+   index.html, lib/tiles/host.js and lib/tiles/library.js (fetch the raw
+   files, replace mine). If lib/site.js or lib/tiles/registry.js are missing,
+   create them from the seed - never overwrite ones that exist. If my
+   index.html has no <script src="lib/tiles/library.js">, add it after host.js
+   so the Library gear loads.
 
 2) Refresh every tile I have from its source, keeping my registry line:
    - finance -> github.com/rowanthistlebrooke/ep-finance-stocks (finance.html)
@@ -89,6 +91,7 @@ CLAUDE.md             the mentor's instructions. this is what makes it a mentor
 lib/site.js           your name. one line, written the moment you say it
 lib/tiles/registry.js the list of tiles on your board. one line per tile
 lib/tiles/host.js     the host. renders each tile sealed, carries its data
+lib/tiles/library.js  the Library: the settings gear, top right. every tile and what powers it
 lib/tiles/weights.ts  the equation. y = Sum of w times x. empty until it is yours
 vault/                your context. who you are, the chapter, the decisions
 supabase/sync.sql     the vault schema. two tables, both yours only
