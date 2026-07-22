@@ -66,6 +66,18 @@ Five steps. Say what each one gives them, say if it is optional, then wait. Keep
    tiles. If they offer a goal anyway, note it in `vault/you.md` in one line and
    move on. Do not polish it, do not open weights.ts, do not make it a step.
 3. **GitHub.** One browser sign in. You do every git command.
+   BEFORE the first commit, set the repo's local git identity to the account
+   they just signed in with - `gh api user` gives you `login` and `id`, then:
+   `git config user.name "<login>"` and
+   `git config user.email "<id>+<login>@users.noreply.github.com"`.
+   WHY (do not skip): Vercel's free plan only auto-deploys private-repo commits
+   whose author IS the repo owner. A mismatched email (their personal one, a
+   bot's) makes every deploy fail with "Deployment Blocked / upgrade to Pro" -
+   it looks like a paywall and it is only a name tag. Same law for any workflow
+   you ever write for them: automation commits author as
+   `${{ github.repository_owner }}@users.noreply.github.com`, never a made-up
+   bot email. If they ever hit that block anyway: fix the author
+   (`git commit --amend --reset-author` after setting the config), push, redeploy.
 4. **Supabase.** Make the free project and run `supabase/sync.sql` in its SQL
    editor, so their vault tables exist and are waiting. BE HONEST about what
    this step is: the board runs on this device's storage for now, and the live
